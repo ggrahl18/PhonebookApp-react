@@ -25,31 +25,31 @@ const requestLogger = (request, response, next) => {
   app.use(requestLogger)
 
 let persons = [
-{
-    name: 'Arto Hellas',
-    number: '040-123456',
-    id: 1,
-},
-{
-    name: 'Ada Lovelace',
-    number: '39-44-5323523',
-    id: 2,
-},
-{
-    name: 'Dan Abramov',
-    number: '2345-2345-12',
-    id: 3,
-},
-{
-    name: 'Mary Poppendieck',
-    number: '39-23-6423122',
-    id: 4,
-},
-{
-    name: 'Peter Pano',
-    number: '23457',
-    id: 5,
-},
+    {
+        name: 'Arto Hellas',
+        number: '040-123456',
+        id: 1,
+    },
+    {
+        name: 'Ada Lovelace',
+        number: '39-44-5323523',
+        id: 2,
+    },
+    {
+        name: 'Dan Abramov',
+        number: '2345-2345-12',
+        id: 3,
+    },
+    {
+        name: 'Mary Poppendieck',
+        number: '39-23-6423122',
+        id: 4,
+    },
+    {
+        name: 'Peter Pano',
+        number: '23457',
+        id: 5,
+    },
 ]
 
 app.get('/api/persons', (req, res) => {
