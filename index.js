@@ -1,14 +1,13 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const express = require('express')
-// var morgan = require('morgan')
-const app = express()
 const bodyParser = require('body-parser')
+const app = express()
 const Person = require('./models/person')
-const cors = require('cors')
-
-app.use(cors())
-app.use(express.static('build'))
-app.use(bodyParser.json())
+// var morgan = require('morgan')
+// const cors = require('cors')
+// app.use(cors())
 
 // app.use(
 //     morgan(
@@ -22,6 +21,8 @@ const requestLogger = (request, response, next) => {
     next()
   }
   
+  app.use(express.static('build'))
+  app.use(bodyParser.json())
   app.use(requestLogger)
 
 let persons = [
@@ -80,14 +81,9 @@ app.get('/api/persons/:id', (request, response, next) => {
         .catch(error => next(error))
   })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body
 
-    if (!body.name || !body.number) {
-        return response.status(400).json({
-            error: 'name or number is missing'
-        })
-    }
     if (persons.find(element => element.name === body.name)) {
         return response.status(400).json({
             error: 'That name has already been entered'
@@ -103,6 +99,7 @@ app.post('/api/persons', (request, response) => {
     person.save().then(savedPerson => {
         response.json(savedPerson.toJSON())
     })
+    .catch(error => next(error))
 })
 
 app.delete('/api/persons/:id', (request, response, next) => {
@@ -137,6 +134,8 @@ const errorHandler = (error, request, response, next) => {
 
     if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformatted id'})
+    } else if (error.name === 'ValidationError') {
+        return response.status(400).json({ error: error.message })
     }
     
     next(error)
