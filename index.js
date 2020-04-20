@@ -145,45 +145,7 @@ const errorHandler = (error, request, response, next) => {
 app.use(errorHandler)
 
 const PORT = process.env.PORT
+
 app.listen(PORT, () => {
     console.log(`sever running on port ${PORT}`)
 })
-
-
-// let persons = [
-//     {
-//         id: 1,
-//         name: 'Arto Hellas', 
-//         number: '5734658386',
-//         date: "2020-01-10T17:30:31.098Z",
-
-//     },
-//     {
-//         id: 2,
-//         name: 'George Lucas', 
-//         number: '5734660467',
-//         date: "2020-01-10T18:39:34.091Z",
-
-//     },
-//     {
-//         id: 3,
-//         name: 'Ada Lovelace', 
-//         number: '39-44-5323523',
-//         date: "2020-01-10T19:20:14.298Z",
-
-//     },
-//     {
-//         id: 4,
-//         name: 'Dan Abramov', 
-//         number: '12-43-234345',
-//         date: "2020-01-10T19:20:14.298Z",
-
-//     },
-//     {
-//         id: 5,
-//         name: 'Mary Poppendieck', 
-//         number: '39-23-6423122',
-//         date: "2020-01-10T19:20:14.298Z",
-
-//     },
-// ]
