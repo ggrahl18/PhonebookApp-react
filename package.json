@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "phonebook",
   "version": "0.0.1",
   "description": "phonebook backend",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf build && cd ../../part2/phonebookFrontend && npm run build --prod && cp -r build ../../round2/phonebookBackend/",
+    "build:ui": "rm -rf build && cd ../PhonebookFrontend && npm run build --prod && cp -r build ../phonebookBackend/",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs": "heroku logs --tail",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ggrahl18/FSOround2.git"
+    "url": "git+https://github.com/ggrahl18/PhonebookApp-react.git"
   },
   "author": "garrett",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ggrahl18/FSOround2/issues"
+    "url": "https://github.com/ggrahl18/PhonebookApp-react/issues"
   },
-  "homepage": "https://github.com/ggrahl18/FSOround2#readme",
+  "homepage": "https://github.com/ggrahl18/PhonebookApp-react#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
     "nodemon": "^2.0.3"
